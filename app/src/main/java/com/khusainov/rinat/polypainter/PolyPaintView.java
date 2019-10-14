@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PointF;
 import android.util.AttributeSet;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -105,41 +104,5 @@ public class PolyPaintView extends View {
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setColor(Color.RED);
         mPaint.setStrokeWidth(getContext().getResources().getDimension(R.dimen.line_width));
-
-        mDetector = new GestureDetector(getContext(), new GestureDetector.OnGestureListener() {
-            @Override
-            public boolean onDown(MotionEvent motionEvent) {
-                return true;
-            }
-
-            @Override
-            public void onShowPress(MotionEvent motionEvent) {
-                mPaint.setColor(Color.GREEN);
-                invalidate();
-            }
-
-            @Override
-            public boolean onSingleTapUp(MotionEvent motionEvent) {
-                return false;
-            }
-
-            @Override
-            public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
-                return true;
-            }
-
-            @Override
-            public void onLongPress(MotionEvent motionEvent) {
-                mPaint.setColor(Color.BLUE);
-                invalidate();
-            }
-
-            @Override
-            public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
-                return false;
-            }
-        });
-
     }
-
 }
